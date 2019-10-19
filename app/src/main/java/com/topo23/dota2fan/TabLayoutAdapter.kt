@@ -1,0 +1,45 @@
+package com.topo23.dota2fan
+
+import android.content.Context
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
+
+class TabLayoutAdapter
+    (fm: FragmentManager, context: Context)
+    :FragmentStatePagerAdapter(fm)
+{
+    override fun getItem(position: Int): Fragment{
+        val MovieFragment = MovieFragment()
+
+        val bundle=Bundle()
+        when(position){
+            0->bundle.putString("KEY", "MOVIE")
+            1->bundle.putString("KEY", "TV")
+        }
+
+        MovieFragment.arguments = bundle
+
+        return MovieFragment
+    }
+
+    override fun getCount(): Int {
+        return 2
+    }
+
+    override fun getPageTitle(position: Int): CharSequence? {
+        return when (position){
+            0 ->"MOVIE"
+            1 ->"TV"
+            else ->"TIDAK ADA"
+    }
+
+    }
+}
+
+
+
+
+
+
